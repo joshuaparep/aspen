@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--Adding field to a existing lunch form view -->
+    <record id='fleet_vehicle_view_form_inherit' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field name="myfuel_gallon"/>
+                <field name="myresult"/>
+            </field>
+
+        </field>
+    </record>
+
+</odoo>

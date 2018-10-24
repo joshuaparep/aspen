@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--**************************************************************
+   **********Adding new form to fleet main menu *********************
+   ***************************************************************-->
+
+    <!--Adding Spare Parts form view-->
+    <record id='fleet_vehicle_parts_view_form_inherit' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.parts.form</field>
+        <field name="model">fleet.vehicle.parts</field>
+        <field name="arch" type="xml">
+            <form string="Spare Parts">
+                <sheet>
+                    <group>
+                        <field name="parts_name"/>
+                        <field name="parts_location"/>
+                        <field name="parts_unit"/>
+                        <field name="parts_stock" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Adding Spare Parts list view-->
+    <record id='fleet_vehicle_parts_view_tree_inherit' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.parts.tree</field>
+        <field name="model">fleet.vehicle.parts</field>
+        <field name="arch" type="xml">
+            <tree string="Spare Parts">
+                <field name="parts_name"/>
+                <field name="parts_location"/>
+                <field name="parts_unit"/>
+                <field name="parts_stock" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Adding new Action Window for Spare Parts-->
+    <record id='fleet_vehicle_parts_action' model='ir.actions.act_window'>
+        <field name="name">Vehicle Spare Parts</field>
+        <field name="res_model">fleet.vehicle.parts</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,form,tree</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Spare Parts.
+            </p>
+            <p>
+                Here you can add various Spare Parts entries for all vehicles.
+                You can also show parts value for a particular vehicle using
+                the search field.
+            </p>
+        </field>
+    </record>
+    <menuitem action="fleet_vehicle_parts_action" parent="fleet.fleet_vehicles" id="fleet_vehicle_parts_menu"/>
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--**************************************************************
+   **********Adding new form to fleet main menu *********************
+   ***************************************************************-->
+
+    <!--Adding Responsibility form view-->
+    <record id='fleet_vehicle_responsibility_view_form_inherit' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.responsibility.form</field>
+        <field name="model">fleet.vehicle.responsibility</field>
+        <field name="arch" type="xml">
+            <form string="Responsibility">
+                <sheet>
+                    <group>
+                        <field name="vehicle_respons"/>
+                        <field name="action_list"/>
+                        <field name="task_complete"/>
+                        <field name="task_incomplete" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Adding Responsibility list view-->
+    <record id='fleet_vehicle_responsibility_view_tree_inherit' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.responsibility.tree</field>
+        <field name="model">fleet.vehicle.responsibility</field>
+        <field name="arch" type="xml">
+            <tree string="Responsibility">
+                <field name="vehicle_respons"/>
+                <field name="action_list"/>
+                <field name="task_complete"/>
+                <field name="task_incomplete" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Adding new Action Window for Responsibility-->
+    <record id='fleet_vehicle_responsibility_action' model='ir.actions.act_window'>
+        <field name="name">Vehicle Responsibility</field>
+        <field name="res_model">fleet.vehicle.responsibility</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Responsibility.
+            </p>
+            <p>
+                Here you can add various Responsibility entries for all vehicles.
+                You can also show parts value for a particular vehicle using
+                the search field.
+            </p>
+        </field>
+    </record>
+    <menuitem action="fleet_vehicle_responsibility_action" parent="fleet.fleet_vehicles" id="fleet_vehicle_responsibility_menu"/>
+
+</odoo>
